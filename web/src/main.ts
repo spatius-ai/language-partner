@@ -292,6 +292,12 @@ $('#lessonText').addEventListener('input', () => { if (st.scene === 'lesson') ap
 $$<HTMLButtonElement>('.info-btn').forEach((b) => (b.onclick = () => { const box = document.getElementById(b.getAttribute('aria-controls')!)!; const open = b.getAttribute('aria-expanded') !== 'true'; b.setAttribute('aria-expanded', String(open)); box.hidden = !open; }));
 
 // ---------- build it: the download starts with the learner's choices ----------
+// "Build it" at the top of the demo page: jump to the Build it section (when the demo sits inside another page, that page scrolls)
+document.getElementById('goBuild')?.addEventListener('click', () => {
+  const el = document.getElementById('build'); if (!el) return;
+  if (parent !== window) parent.postMessage({ type: 'spatius-scroll', y: el.getBoundingClientRect().top + window.scrollY }, '*');
+  else el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
 $('#download')?.addEventListener('click', (e) => { // only on the demo page; the template has no Build it buttons
   const q = new URLSearchParams({ lang: st.lang, level: st.level, scene: st.scene, face: st.face });
   const lesson = $<HTMLTextAreaElement>('#lessonText').value.trim();
