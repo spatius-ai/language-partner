@@ -1,0 +1,15 @@
+// Cloudflare Workers settings for the Language partner. Used by "Deploy to Cloudflare" and by `npm run deploy`.
+{
+  "name": "language-partner",
+  "main": "server/worker.mjs",
+  "compatibility_date": "2025-09-01",
+  "assets": { "directory": "./dist", "binding": "ASSETS" },
+  "build": { "command": "npm run build" },
+  "vars": {
+    "SPATIUS_REGION": "us-west",
+    "PARTNER_LANG": "es",
+    "PARTNER_LEVEL": "beginner",
+    "PARTNER_SCENE": "cafe",
+    "PARTNER_FACE": "camille"
+  }
+}

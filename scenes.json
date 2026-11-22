@@ -1,0 +1,286 @@
+{
+  "langs": {
+    "es": "Spanish",
+    "en": "English",
+    "zh": "Chinese (Mandarin)",
+    "ar": "Arabic (Modern Standard)",
+    "fr": "French"
+  },
+  "scenes": {
+    "cafe": {
+      "role": "a friendly waiter at the counter of a small café",
+      "image": "cafe",
+      "board": {
+        "l": 11.6,
+        "t": 6.4,
+        "w": 22.6,
+        "h": 37.6
+      },
+      "avatarX": 53,
+      "clip": 64.2,
+      "es": {
+        "title": "Menú",
+        "items": [
+          "café con leche · 2,20",
+          "cortado · 1,80",
+          "croissant · 1,90",
+          "tostada · 2,50",
+          "zumo de naranja · 3,00"
+        ],
+        "open": "¡Hola! Bienvenido. ¿Qué te gustaría tomar?",
+        "tr": "Hi! Welcome. What would you like to have?"
+      },
+      "en": {
+        "title": "Menu",
+        "items": [
+          "latte · 2.20",
+          "flat white · 2.40",
+          "croissant · 1.90",
+          "toast · 2.50",
+          "orange juice · 3.00"
+        ],
+        "open": "Hi there! Welcome. What can I get you?",
+        "tr": "Hi there! Welcome. What can I get you?"
+      },
+      "zh": {
+        "title": "菜单",
+        "items": [
+          "拿铁 · 22",
+          "美式咖啡 · 18",
+          "牛角包 · 15",
+          "吐司 · 20",
+          "橙汁 · 25"
+        ],
+        "open": "你好！欢迎光临。你想喝点什么？",
+        "tr": "Hello! Welcome. What would you like to drink?"
+      },
+      "ar": {
+        "title": "القائمة",
+        "items": [
+          "قهوة بالحليب · ١٢",
+          "قهوة عربية · ٨",
+          "كرواسون · ٩",
+          "خبز محمص · ١٠",
+          "عصير برتقال · ١٥"
+        ],
+        "open": "أهلًا وسهلًا! ماذا تحب أن تطلب؟",
+        "tr": "Welcome! What would you like to order?"
+      },
+      "fr": {
+        "title": "Menu",
+        "items": [
+          "café crème · 2,50",
+          "expresso · 1,80",
+          "croissant · 1,40",
+          "tartine · 3,00",
+          "jus d'orange · 3,50"
+        ],
+        "open": "Bonjour ! Bienvenue. Qu'est-ce que je vous sers ?",
+        "tr": "Hello! Welcome. What can I get you?"
+      },
+      "fit": {
+        "y": 0.25,
+        "scale": 0.6
+      }
+    },
+    "hotel": {
+      "role": "a helpful receptionist at the front desk of a small hotel",
+      "image": "hotel",
+      "board": {
+        "l": 19.6,
+        "t": 11.6,
+        "w": 14.6,
+        "h": 35.4,
+        "tight": true
+      },
+      "avatarX": 58,
+      "clip": 66,
+      "es": {
+        "title": "Recepción",
+        "items": [
+          "habitación doble",
+          "la llave",
+          "desayuno · 7–10 h",
+          "wifi gratis",
+          "salida · 12 h"
+        ],
+        "open": "¡Buenas tardes! Bienvenido al hotel. ¿Tiene una reserva?",
+        "tr": "Good afternoon! Welcome to the hotel. Do you have a reservation?"
+      },
+      "en": {
+        "title": "Reception",
+        "items": [
+          "double room",
+          "room key",
+          "breakfast · 7–10 am",
+          "free wifi",
+          "check-out · 12 pm"
+        ],
+        "open": "Good afternoon, and welcome! Do you have a reservation?",
+        "tr": "Good afternoon, and welcome! Do you have a reservation?"
+      },
+      "zh": {
+        "title": "前台",
+        "items": [
+          "双人间",
+          "房卡",
+          "早餐 · 7–10点",
+          "免费无线网",
+          "退房 · 12点"
+        ],
+        "open": "下午好！欢迎入住。您有预订吗？",
+        "tr": "Good afternoon! Welcome. Do you have a reservation?"
+      },
+      "ar": {
+        "title": "الاستقبال",
+        "items": [
+          "غرفة مزدوجة",
+          "المفتاح",
+          "الفطور · ٧–١٠",
+          "واي فاي مجاني",
+          "المغادرة · ١٢ ظهرًا"
+        ],
+        "open": "مساء الخير! أهلًا بك في الفندق. هل لديك حجز؟",
+        "tr": "Good evening! Welcome to the hotel. Do you have a reservation?"
+      },
+      "fr": {
+        "title": "Réception",
+        "items": [
+          "chambre double",
+          "la clé",
+          "petit-déjeuner",
+          "wifi gratuit",
+          "départ · 12h"
+        ],
+        "open": "Bonjour et bienvenue ! Vous avez une réservation ?",
+        "tr": "Hello and welcome! Do you have a reservation?"
+      },
+      "fit": {
+        "y": 0.2,
+        "scale": 0.61
+      }
+    },
+    "train": {
+      "role": "a ticket seller at the ticket window of a train station",
+      "image": "train",
+      "board": {
+        "l": 1.8,
+        "t": 2.6,
+        "w": 38.6,
+        "h": 44.6
+      },
+      "avatarX": 64,
+      "clip": 69.6,
+      "es": {
+        "title": "Salidas",
+        "items": [
+          "Toledo · 10:15 · andén 3",
+          "Segovia · 10:40 · andén 5",
+          "Sevilla · 11:00 · andén 1",
+          "billete de ida",
+          "ida y vuelta"
+        ],
+        "open": "Hola, buenos días. ¿Adónde quiere ir?",
+        "tr": "Hello, good morning. Where would you like to go?"
+      },
+      "en": {
+        "title": "Departures",
+        "items": [
+          "Oxford · 10:15 · platform 3",
+          "Bath · 10:40 · platform 5",
+          "York · 11:00 · platform 1",
+          "single ticket",
+          "return ticket"
+        ],
+        "open": "Good morning! Where are you travelling to today?",
+        "tr": "Good morning! Where are you travelling to today?"
+      },
+      "zh": {
+        "title": "出发",
+        "items": [
+          "杭州 · 10:15 · 3站台",
+          "苏州 · 10:40 · 5站台",
+          "南京 · 11:00 · 1站台",
+          "单程票",
+          "往返票"
+        ],
+        "open": "你好！请问您要去哪里？",
+        "tr": "Hello! Where would you like to go?"
+      },
+      "ar": {
+        "title": "المغادرة",
+        "items": [
+          "الإسكندرية · ١٠:١٥ · رصيف ٣",
+          "الأقصر · ١٠:٤٠ · رصيف ٥",
+          "أسوان · ١١:٠٠ · رصيف ١",
+          "تذكرة ذهاب",
+          "ذهاب وعودة"
+        ],
+        "open": "صباح الخير! إلى أين تريد أن تسافر؟",
+        "tr": "Good morning! Where would you like to travel?"
+      },
+      "fr": {
+        "title": "Départs",
+        "items": [
+          "Lyon · 10h15 · voie 3",
+          "Bordeaux · 10h40 · voie 5",
+          "Nice · 11h00 · voie 1",
+          "aller simple",
+          "aller-retour"
+        ],
+        "open": "Bonjour ! Vous allez où aujourd'hui ?",
+        "tr": "Hello! Where are you going today?"
+      },
+      "fit": {
+        "y": 0.1,
+        "scale": 0.63
+      }
+    },
+    "lesson": {
+      "role": "a patient language teacher practising the learner's own lesson with them",
+      "image": "lesson",
+      "board": {
+        "l": 3.3,
+        "t": 3.2,
+        "w": 46.4,
+        "h": 47.6
+      },
+      "avatarX": 66,
+      "clip": 69,
+      "es": {
+        "title": "Tu lección",
+        "items": [],
+        "open": "¡Hola! Hoy practicamos tu lección. ¿Empezamos?",
+        "tr": "Hi! Today we practise your lesson. Shall we start?"
+      },
+      "en": {
+        "title": "Your lesson",
+        "items": [],
+        "open": "Hi! Today we'll practise your lesson. Shall we start?",
+        "tr": "Hi! Today we'll practise your lesson. Shall we start?"
+      },
+      "zh": {
+        "title": "你的课程",
+        "items": [],
+        "open": "你好！今天我们练习你的课程。开始吧？",
+        "tr": "Hello! Today we practise your lesson. Shall we start?"
+      },
+      "ar": {
+        "title": "درسك",
+        "items": [],
+        "open": "مرحبًا! اليوم نتدرّب على درسك. هل نبدأ؟",
+        "tr": "Hello! Today we practise your lesson. Shall we start?"
+      },
+      "fr": {
+        "title": "Ta leçon",
+        "items": [],
+        "open": "Bonjour ! Aujourd'hui, on pratique ta leçon. On commence ?",
+        "tr": "Hello! Today we practise your lesson. Shall we start?"
+      },
+      "fit": {
+        "y": 0.1,
+        "scale": 0.63
+      }
+    }
+  }
+}
