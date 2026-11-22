@@ -37,6 +37,7 @@ language-partner/
   scenes.json               the places, languages, board words and first lines
   server/
     brain.mjs               the language partner itself: the prompt, the red pen rules, the voice style
+    voices.mjs              optional ElevenLabs voices, one per person (used when ELEVENLABS_API_KEY is set)
     app.mjs                 the API: session token, hearing, the reply, the voice (uses brain.mjs)
     node.mjs                runs the app on your computer
     worker.mjs              runs the app on Cloudflare Workers
@@ -132,6 +133,7 @@ The page calls `/api/...` and loads `/assets/...` on the same address as the pag
 | `SPATIUS_APP_ID` | Yes | Your Spatius App ID |
 | `SPATIUS_REGION` | No | `us-west` (default) or your region |
 | `OPENAI_API_KEY` | No | Your OpenAI key; without it, starter minutes are used |
+| `ELEVENLABS_API_KEY` | No | ElevenLabs voices: each person has their own voice, and a native voice for Arabic. Without it, the OpenAI voice is used, and it is also used if ElevenLabs refuses a request. Model: `ELEVENLABS_MODEL` (default `eleven_v4_turbo`) |
 | `OPENAI_BASE_URL` | No | Another OpenAI-compatible address for your own key. Your OpenAI key is never sent to the starter service. |
 | `SPATIUS_STARTER_URL` | No | Another starter service address (for testing) |
 | `PARTNER_LANG` | No | Starting language: `es`, `en`, `zh`, `ar` or `fr` |

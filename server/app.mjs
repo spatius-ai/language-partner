@@ -12,6 +12,7 @@
 // Without it, the requests go to the Spatius starter service, signed with your Spatius key.
 
 import { LEVELS, hearingHint, partnerMessages, readTurn, voiceStyle } from './brain.mjs';
+import { elevenSpeech, elevenOf } from './voices.mjs';
 
 // The partners a learner can pick: a Spatius avatar and a matching OpenAI voice.
 export const FACES = {
@@ -32,6 +33,7 @@ export function settings(env, scenes) {
   const base = ownKey ? (env.OPENAI_BASE_URL && !isStarter(env.OPENAI_BASE_URL) ? env.OPENAI_BASE_URL : 'https://api.openai.com/v1') : starterUrl;
   return {
     apiKey: env.SPATIUS_API_KEY || '',
+    eleven: elevenOf(env), // ElevenLabs voices when ELEVENLABS_API_KEY is set
     appId: env.SPATIUS_APP_ID || '',
     region: env.SPATIUS_REGION || 'us-west',
     // where the page starts: the choices from the demo, or your own
@@ -155,6 +157,9 @@ async function speak(s, request, scenes) {
   const input = String(b.text || '').replace(/\s+/g, ' ').trim().slice(0, 600);
   if (!input) return json(400, { error: 'Nothing to say.' });
   // response_format "pcm" is raw PCM16 mono at 24 kHz: exactly what the avatar takes, so it is passed on untouched
+  // ElevenLabs first when ELEVENLABS_API_KEY is set (each person has their own voice); the OpenAI voice if it is not set or says no
+  const el = await elevenSpeech(s.eleven, (FACES[b.face] || FACES[s.choices.face]).avatarId, input, lang);
+  if (el) return new Response(el.body, { status: 200, headers: { 'Content-Type': 'audio/pcm;rate=24000', 'Cache-Control': 'no-store' } });
   const res = await callOpenAI(s, '/audio/speech', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
