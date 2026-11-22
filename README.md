@@ -98,8 +98,10 @@ Pick the row that matches what you have.
 | Any website or web app, and you want the partner inside it | Deploy this template (Cloudflare button or your own server), then add one line where it should appear: `<script src="https://YOUR-PARTNER-ADDRESS/embed.js" data-lang="fr" data-scene="hotel" async></script>`. The `data-` choices are optional. Events arrive on your page as `window` event `spatius:event`. |
 | Your own backend, in any language | Copy `server/brain.mjs` (or port it: it is about 100 lines of plain functions). Call `partnerMessages()` before your LLM call and `readTurn()` after it. It needs no network and no framework. |
 | Your own web page, and you want the avatar | Copy `web/src/seat.ts`. It loads a Spatius avatar into any element and plays 24 kHz PCM16 audio on it with lip sync. |
-| A LiveKit voice agent | Keep your agent and its room. Add the Spatius avatar to your room with the `livekit-plugins-spatius` plugin (see [spatius.ai/livekit](https://www.spatius.ai/livekit/)), and call `partnerMessages()` / `readTurn()` from your agent's LLM step. |
+| A LiveKit or Agora voice agent | Start from Spatius's official example, [livekit-demo](https://github.com/spatius-ai/spatius-integration-demo/tree/main/livekit-demo) or [agora-demo](https://github.com/spatius-ai/spatius-integration-demo/tree/main/agora-demo), then call `partnerMessages()` / `readTurn()` from your agent's LLM step. The brain is plain functions, so this demo's standout feature works the same over LiveKit or Agora. |
 | Another LLM, or an OpenAI-compatible gateway | Set `OPENAI_BASE_URL` with your own `OPENAI_API_KEY`. The brain works with any chat model that can return JSON. |
+
+Spatius's official examples show how to connect an avatar (Direct, LiveKit, Agora, iOS, Android, Flutter): [spatius-integration-demo](https://github.com/spatius-ai/spatius-integration-demo), [livekit-plugins-spatius](https://github.com/spatius-ai/livekit-plugins-spatius) and [create-spatius-app](https://github.com/spatius-ai/create-spatius-app). This template shows what to build on top: the use case and its standout feature, in a brain you can plug into any of them.
 
 ## Technical stack
 
