@@ -140,7 +140,7 @@ async function talk(s, request, scenes) {
   const res = await callOpenAI(s, '/chat/completions', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ model: s.openai.chat, temperature: 0.4, max_tokens: 350, response_format: { type: 'json_object' }, messages: partnerMessages(scenes, turn) }),
+    body: JSON.stringify({ model: s.openai.chat, temperature: 0.4, max_tokens: 420, response_format: { type: 'json_object' }, messages: partnerMessages(scenes, turn) }),
   });
   if (!res.ok) { const e = await openaiError(res, s); return json(e.status, e); }
   const raw = (await res.json().catch(() => ({}))).choices?.[0]?.message?.content;
