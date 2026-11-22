@@ -291,6 +291,17 @@ $('#faces').addEventListener('click', (e) => {
 $('#lessonText').addEventListener('input', () => { if (st.scene === 'lesson') applyScene(); });
 $$<HTMLButtonElement>('.info-btn').forEach((b) => (b.onclick = () => { const box = document.getElementById(b.getAttribute('aria-controls')!)!; const open = b.getAttribute('aria-expanded') !== 'true'; b.setAttribute('aria-expanded', String(open)); box.hidden = !open; }));
 
+// ---------- build it: the download starts with the learner's choices ----------
+$('#download')?.addEventListener('click', (e) => { // only on the demo page; the template has no Build it buttons
+  const q = new URLSearchParams({ lang: st.lang, level: st.level, scene: st.scene, face: st.face });
+  const lesson = $<HTMLTextAreaElement>('#lessonText').value.trim();
+  if (st.scene === 'lesson' && lesson) q.set('lesson', lesson.slice(0, 1500));
+  (e.currentTarget as HTMLAnchorElement).href = `api/download?${q}`;
+  track('download', { lang: st.lang, scene: st.scene, face: st.face });
+});
+$('#deploy')?.addEventListener('click', () => track('deploy_click'));
+$('#github')?.addEventListener('click', () => track('github_click'));
+
 // ---------- start ----------
 applyScene();
 // the page starts with the choices from the server (your .env), if it sends them
@@ -299,6 +310,8 @@ function useChoices(c: Choices) {
   const press = (sel: string) => { const b = document.querySelector<HTMLButtonElement>(sel); if (b && b.getAttribute('aria-pressed') !== 'true') b.click(); };
   press(`#faces [data-face="${c.face}"]`); press(`#langs [data-lang="${c.lang}"]`); press(`#levels [data-level="${c.level}"]`); press(`#scenes [data-scene="${c.scene}"]`);
 }
-fetch('api/config').then((r) => r.json()).then(async (c) => { cfg = c; if (c.choices) useChoices(c.choices); drawable = await canDraw(); }).catch(() => { drawable = false; });
+// choices in the address (?lang=fr&scene=hotel, used by embed.js) win over the server's starting choices
+const fromUrl = (c: Partial<Choices> = {}) => { const q = new URLSearchParams(location.search); for (const k of ['lang', 'level', 'scene', 'face'] as const) { const v = q.get(k); if (v && /^[a-z]{2,12}$/.test(v)) (c as any)[k] = v; } return c as Choices; };
+fetch('api/config').then((r) => r.json()).then(async (c) => { cfg = c; useChoices(fromUrl({ ...(c.choices || {}) })); drawable = await canDraw(); }).catch(() => { drawable = false; });
 const report = () => parent !== window && parent.postMessage({ type: 'spatius-embed-height', demo: 'language-partner', height: document.documentElement.scrollHeight }, '*');
 new ResizeObserver(report).observe(document.body);

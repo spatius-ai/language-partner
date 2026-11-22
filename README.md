@@ -36,7 +36,8 @@ language-partner/
   .dev.vars.example         secrets for Cloudflare
   scenes.json               the places, languages, board words and first lines
   server/
-    app.mjs                 the API: session token, hearing, the reply with the red pen, the voice
+    brain.mjs               the language partner itself: the prompt, the red pen rules, the voice style
+    app.mjs                 the API: session token, hearing, the reply, the voice (uses brain.mjs)
     node.mjs                runs the app on your computer
     worker.mjs              runs the app on Cloudflare Workers
   web/
@@ -44,10 +45,11 @@ language-partner/
     src/main.ts             the conversation, the red pen, the pocket and the microphone
     src/partner.css         the look of the scene, the subtitles and the pens
     src/seat.ts             the Spatius avatar: load, connect, speak
+    public/embed.js         puts the partner on any page with one line
     public/assets/          fonts, faces and the place pictures
 ```
 
-The same `server/app.mjs` runs in both places. It only uses the standard `fetch`, `Request` and `Response`, so `node.mjs` and `worker.mjs` are thin wrappers around it.
+The code has three parts, so you can keep the part you need. `server/brain.mjs` is what makes it a language partner; `server/app.mjs` connects it to OpenAI and the browser; `web/src/seat.ts` connects the avatar. The same `server/app.mjs` runs in both places. It only uses the standard `fetch`, `Request` and `Response`, so `node.mjs` and `worker.mjs` are thin wrappers around it.
 
 ## Runtime modes
 
@@ -86,6 +88,18 @@ The voice is passed to the avatar exactly as it arrives (24 kHz), with no resamp
 **Your lesson.** Under "My lesson", learners paste a word list or a grammar point, and the partner builds the conversation around it. Set a default with `PARTNER_LESSON`.
 
 **Partners.** The five partners are in `FACES` in `server/app.mjs`, each with a Spatius avatar and a matching voice. You can use any avatar from your Spatius account.
+
+## Use it in your own app
+
+Pick the row that matches what you have.
+
+| You have | Do this |
+| --- | --- |
+| Any website or web app, and you want the partner inside it | Deploy this template (Cloudflare button or your own server), then add one line where it should appear: `<script src="https://YOUR-PARTNER-ADDRESS/embed.js" data-lang="fr" data-scene="hotel" async></script>`. The `data-` choices are optional. Events arrive on your page as `window` event `spatius:event`. |
+| Your own backend, in any language | Copy `server/brain.mjs` (or port it: it is about 100 lines of plain functions). Call `partnerMessages()` before your LLM call and `readTurn()` after it. It needs no network and no framework. |
+| Your own web page, and you want the avatar | Copy `web/src/seat.ts`. It loads a Spatius avatar into any element and plays 24 kHz PCM16 audio on it with lip sync. |
+| A LiveKit voice agent | Keep your agent and its room. Add the Spatius avatar to your room with the `livekit-plugins-spatius` plugin (see [spatius.ai/livekit](https://www.spatius.ai/livekit/)), and call `partnerMessages()` / `readTurn()` from your agent's LLM step. |
+| Another LLM, or an OpenAI-compatible gateway | Set `OPENAI_BASE_URL` with your own `OPENAI_API_KEY`. The brain works with any chat model that can return JSON. |
 
 ## Technical stack
 

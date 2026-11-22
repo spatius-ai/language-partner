@@ -14,7 +14,10 @@
   .made { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 28px; color: var(--lab-muted, #6E7187); text-decoration: none; }
   .made img { width: 18px; height: 18px; }
   @media (max-width: 600px) { .page { padding: 16px 8px 28px; } }
+  /* inside another page (embed.js): that page already has its margins */
+  .framed body { background: transparent; } .framed .page { padding: 0; max-width: none; } .framed .made { margin-top: 16px; }
 </style>
+<script>if (window.parent !== window) document.documentElement.classList.add('framed');</script>
 </head>
 <body>
 <div class="spatius-website-theme page">
