@@ -8,7 +8,7 @@ While they talk, a red pen corrects the learner's own words right in the subtitl
 
 This repository is a small, complete template. It runs on your computer in a few minutes with only your Spatius API key and App ID. It is for language schools, teachers and learning apps that want a speaking partner with a face. It is also for developers who want to see how a Spatius avatar connects to speech, an LLM and a web page.
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/spatius-ai/language-partner)
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/spatius-templates/language-partner)
 
 ## Why this matters
 
@@ -116,7 +116,7 @@ Spatius's official examples show how to connect an avatar (Direct, LiveKit, Agor
 You need Node 20.3 or newer and a Spatius account, for an API key and App ID from [app.spatius.ai](https://app.spatius.ai). You also need a browser with WebGPU or WebGL2, and a microphone if you want to speak.
 
 ```sh
-git clone https://github.com/spatius-ai/language-partner
+git clone https://github.com/spatius-templates/language-partner
 cd language-partner
 cp .env.example .env      # paste SPATIUS_API_KEY and SPATIUS_APP_ID
 npm install
